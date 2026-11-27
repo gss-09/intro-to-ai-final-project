@@ -1,3 +1,8 @@
 .DS_Store
 __pycache__/
 .venv/
+# Large/regenerable: raw FAA CSVs (re-download, see README), splits (python3 prepare.py), per-report predictions, live logs
+data/raw/
+data/*.csv
+results/*_predictions.csv
+results/*.log
