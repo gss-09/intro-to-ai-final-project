@@ -9,7 +9,7 @@ Given the free-text description in an FAA Service Difficulty Report (SDR), predi
 
 | Date | Deliverable | Status |
 | --- | --- | --- |
-| Sep 28 | One-page proposal | Submitted (`COSC_4368_Final_Project_Proposal (1).pdf`) |
+| Sep 28 | One-page proposal | Submitted (`COSC_4368_Final_Project_Proposal.pdf`) |
 | **Sun Nov 29, night** | Presentation (10 min + 2 min Q&A) | In progress |
 | Dec 11, 11:59 pm | 4–6 page report on the course template + supplementary ZIP | Not started |
 
