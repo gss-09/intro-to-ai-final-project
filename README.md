@@ -21,7 +21,7 @@ Given the free-text description in an FAA Service Difficulty Report (SDR), predi
 | Clean + split (`prepare.py`) | Done |
 | Leakage check + masking | Done: see below |
 | Baseline (`baseline.py`) | Done: test accuracy 0.905, macro-F1 0.799 |
-| DistilBERT (`bert.py`) | Smoke run passed on MPS (2% of training data, 1 epoch; pipeline check only, not a result). Full 2-epoch run started Nov 26 |
+| DistilBERT (`bert.py`) | Done: test accuracy 0.911, macro-F1 0.804 (2 epochs, ~31 min on Apple MPS) |
 | Learning curve (training-set size) | Planned |
 | Error analysis | Planned |
 | Slides | Planned |
@@ -55,7 +55,7 @@ Mechanics cite manual sections such as `AMM 52-11-21` or `SRM 51-40-02`, whose f
 | --- | --- | ---: | ---: |
 | TF-IDF + Logistic Regression (C=16, balanced) | masked | **0.905** | **0.799** |
 | TF-IDF + Logistic Regression (C=16, balanced) | unmasked (leakage ablation) | 0.909 | 0.812 |
-| DistilBERT | masked | running | running |
+| DistilBERT (2 epochs, lr 5e-5, max_len 128) | masked | **0.911** | **0.804** |
 
 Baseline validation sweep (2024 validation split, macro-F1; manual, no tuning library):
 
@@ -72,7 +72,14 @@ What the baseline shows so far:
 - **Year-to-year drift:** macro-F1 drops from 0.851 on 2024 validation to 0.799 on 2025 test.
 - **Weakest systems (test F1):** `31` indicating/recording systems 0.23, `51` standard practices/structures 0.42, `30` ice and rain protection 0.61. `51` is a generic structures chapter that overlaps with fuselage `53` and wings `57`. Best: `33` lights 0.98, `35` oxygen 0.96, `53` fuselage 0.95.
 
-Files: `results/baseline_test.json` (per-class scores), `results/baseline_test_confusion.png`, `results/baseline_top_words.json`.
+What DistilBERT shows so far:
+
+- **Only slightly better than the baseline on test:** +0.6 accuracy points and +0.5 macro-F1 points, after ~31 minutes of GPU training against a few minutes of CPU training for the baseline.
+- **Less year-to-year drift:** validation macro-F1 is 0.833 (below the baseline's 0.851), but test macro-F1 is 0.804 (above the baseline's 0.799).
+- **Epoch 2 was clearly better than epoch 1** (validation macro-F1 0.790 → 0.833), so a third epoch may still help.
+- **Same weak systems:** `31` 0.23, `51` 0.41, `30` 0.61. Both models fail on the same chapters, which points to label overlap rather than model capacity. DistilBERT gains most on `49` APU (+0.04), `56` windows (+0.04) and `78` exhaust (+0.03), and loses most on `73` engine fuel (−0.05) and `75` engine air (−0.03).
+
+Files: `results/baseline_test.json` and `results/bert_frac1_test.json` (per-class scores), `results/*_confusion.png`, `results/baseline_top_words.json`, `results/bert_frac1_log.csv` (per-epoch loss and validation macro-F1).
 
 ## Files
 
@@ -96,7 +103,7 @@ python3 -m venv --system-site-packages .venv && .venv/bin/pip install transforme
 
 ## Plan to the presentation (Sun Nov 29)
 
-1. **Thu night:** baseline test results; full DistilBERT run.
+1. **Thu night (done):** baseline test results; full DistilBERT run.
 2. **Fri:** learning curve: both models at 10%, 30%, 100% of the training data. Error analysis: most-confused system pairs, examples where the models disagree.
 3. **Sat:** slides: problem, data and class distribution, leakage finding, methods, results table, confusion matrix, learning curve, takeaways.
 4. **Sun:** rehearse (10 minutes), final checks.

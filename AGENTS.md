@@ -17,7 +17,7 @@ python3 prepare.py                 # -> data/{train,val,test}.csv, data/summary.
 python3 metrics.py                 # self-check, prints "ok"
 python3 baseline.py                # ~10 min CPU -> results/baseline_*
 python3 -m venv --system-site-packages .venv && .venv/bin/pip install transformers==4.57.1
-.venv/bin/python bert.py           # ~40 min on Apple MPS -> results/bert_frac1_*
+.venv/bin/python bert.py           # ~31 min on Apple MPS -> results/bert_frac1_*
 .venv/bin/python bert.py --train-frac 0.1   # learning-curve point -> results/bert_frac0.1_*
 ```
 
