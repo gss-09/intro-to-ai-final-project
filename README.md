@@ -108,7 +108,7 @@ python3 -m venv --system-site-packages .venv && .venv/bin/pip install transforme
 3. **Sat:** slides: problem, data and class distribution, leakage finding, methods, results table, confusion matrix, learning curve, takeaways.
 4. **Sun:** rehearse (10 minutes), final checks.
 
-Team members not running experiments can start the slide template and the background reading (TF-IDF/linear text classification, transformers/DistilBERT, FAA SDR and JASC documentation) now.
+Everyone works on the models and experiments. Slides are drafted quickly with AI from this README and the results files.
 
 ## Future vision
 
