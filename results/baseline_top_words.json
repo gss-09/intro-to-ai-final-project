@@ -1,0 +1,260 @@
+{
+  "chosen": {
+    "C": 16,
+    "class_weight": "balanced",
+    "val_macro_f1": 0.850789616458328,
+    "seconds": 69.5312750339508
+  },
+  "top_words": {
+    "21": [
+      "pack",
+      "smell",
+      "cabin",
+      "air",
+      "odor",
+      "fan",
+      "pressurization",
+      "acm"
+    ],
+    "24": [
+      "idg",
+      "generator",
+      "gen",
+      "bus",
+      "power",
+      "alternator",
+      "electrical",
+      "gcu"
+    ],
+    "25": [
+      "slide",
+      "flashlight",
+      "oven",
+      "megaphone",
+      "girt",
+      "door",
+      "bar",
+      "01"
+    ],
+    "26": [
+      "fire",
+      "smoke",
+      "loop",
+      "detector",
+      "overheat",
+      "warning",
+      "detection",
+      "bottle"
+    ],
+    "27": [
+      "flap",
+      "flaps",
+      "rudder",
+      "trim",
+      "slat",
+      "spoiler",
+      "actuator",
+      "elevator"
+    ],
+    "28": [
+      "fuel",
+      "tank",
+      "pump",
+      "cap",
+      "center",
+      "refuel",
+      "transfer",
+      "fcmc"
+    ],
+    "29": [
+      "hydraulic",
+      "hyd",
+      "leak",
+      "pump",
+      "green",
+      "edp",
+      "sys",
+      "fluid"
+    ],
+    "30": [
+      "ice",
+      "heat",
+      "window",
+      "pitot",
+      "window heat",
+      "wing",
+      "wing anti",
+      "wiper"
+    ],
+    "31": [
+      "display",
+      "warning",
+      "eng control",
+      "message",
+      "eicas",
+      "config warning",
+      "master",
+      "aural"
+    ],
+    "32": [
+      "gear",
+      "brake",
+      "tire",
+      "mlg",
+      "steering",
+      "brakes",
+      "nlg",
+      "nose"
+    ],
+    "33": [
+      "light",
+      "emergency",
+      "lights",
+      "battery",
+      "exit",
+      "epsu",
+      "emergency light",
+      "sign"
+    ],
+    "34": [
+      "radar",
+      "fmc",
+      "pitot",
+      "airspeed",
+      "adc",
+      "weather",
+      "gps",
+      "adiru"
+    ],
+    "35": [
+      "o2",
+      "oxygen",
+      "mask",
+      "masks",
+      "oxy",
+      "container",
+      "o2 mask",
+      "oxygen panel"
+    ],
+    "49": [
+      "apu",
+      "oil",
+      "replaced apu",
+      "apu oil",
+      "found apu",
+      "2100",
+      "from apu",
+      "etops apu"
+    ],
+    "51": [
+      "existing",
+      "no",
+      "repair",
+      "14ad",
+      "expired",
+      "existing repair",
+      "er",
+      "inspection"
+    ],
+    "52": [
+      "door",
+      "handle",
+      "cargo door",
+      "hatch",
+      "latch",
+      "doors",
+      "armed",
+      "open"
+    ],
+    "53": [
+      "floor",
+      "fuselage",
+      "frame",
+      "sta",
+      "corrosion",
+      "corroded",
+      "seat track",
+      "floor panel"
+    ],
+    "54": [
+      "pylon",
+      "cowl",
+      "engine",
+      "nacelle",
+      "panel",
+      "cowling",
+      "fan cowl",
+      "strut"
+    ],
+    "55": [
+      "elevator",
+      "stab",
+      "stabilizer",
+      "horizontal",
+      "rudder",
+      "vertical",
+      "rib",
+      "horizontal stabilizer"
+    ],
+    "56": [
+      "window",
+      "windshield",
+      "pane",
+      "sliding",
+      "outer",
+      "windshield cracked",
+      "sliding window",
+      "shattered"
+    ],
+    "57": [
+      "wing",
+      "flap",
+      "slat",
+      "aileron",
+      "winglet",
+      "rib",
+      "spoiler",
+      "panel"
+    ],
+    "72": [
+      "engine",
+      "eng",
+      "oil",
+      "vibration",
+      "stall",
+      "blade",
+      "chip",
+      "fan"
+    ],
+    "73": [
+      "fuel",
+      "eec",
+      "engine",
+      "fadec",
+      "eng",
+      "eng eec",
+      "filter",
+      "engine fuel"
+    ],
+    "75": [
+      "bleed",
+      "engine",
+      "eng",
+      "valve",
+      "vsv",
+      "ice",
+      "hpsov",
+      "duct"
+    ],
+    "78": [
+      "reverser",
+      "tr",
+      "transcowl",
+      "engine",
+      "eng",
+      "exhaust",
+      "thrust reverser",
+      "thrust"
+    ]
+  }
+}

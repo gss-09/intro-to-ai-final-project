@@ -20,7 +20,7 @@ Given the free-text description in an FAA Service Difficulty Report (SDR), predi
 | Download data | Done: FAA SDR 2024 and 2025 CSVs in `data/raw/` (133,735 reports) |
 | Clean + split (`prepare.py`) | Done |
 | Leakage check + masking | Done: see below |
-| Baseline (`baseline.py`) | Running: manual validation sweep, then one test-set score |
+| Baseline (`baseline.py`) | Done: test accuracy 0.905, macro-F1 0.799 |
 | DistilBERT (`bert.py`) | Smoke run passed on MPS (2% of training data, 1 epoch; pipeline check only, not a result). Full 2-epoch run started Nov 26 |
 | Learning curve (training-set size) | Planned |
 | Error analysis | Planned |
@@ -49,17 +49,30 @@ Mechanics cite manual sections such as `AMM 52-11-21` or `SRM 51-40-02`, whose f
 
 ### Results so far
 
-Validation macro-F1 of the baseline, manual sweep (no tuning library). Test results will be added when the runs finish.
+**Test set (2025, 61,160 reports, 25 systems):**
 
-| C | Class weight | Val macro-F1 |
-| ---: | --- | ---: |
-| 1 | none | 0.797 |
-| 1 | balanced | 0.831 |
-| 4 | none | 0.836 |
-| 4 | balanced | 0.849 |
-| 16 | none / balanced | running |
+| Model | Text | Accuracy | Macro-F1 |
+| --- | --- | ---: | ---: |
+| TF-IDF + Logistic Regression (C=16, balanced) | masked | **0.905** | **0.799** |
+| TF-IDF + Logistic Regression (C=16, balanced) | unmasked (leakage ablation) | 0.909 | 0.812 |
+| DistilBERT | masked | running | running |
 
-Balanced class weights consistently help the rare systems.
+Baseline validation sweep (2024 validation split, macro-F1; manual, no tuning library):
+
+| C | none | balanced |
+| ---: | ---: | ---: |
+| 1 | 0.797 | 0.831 |
+| 4 | 0.836 | 0.849 |
+| 16 | 0.844 | **0.851** |
+
+What the baseline shows so far:
+
+- **Balanced class weights help** at every C, because they raise recall on rare systems.
+- **The leak is real but small for TF-IDF:** unmasked text adds 1.4 macro-F1 points. The description words already carry most of the signal.
+- **Year-to-year drift:** macro-F1 drops from 0.851 on 2024 validation to 0.799 on 2025 test.
+- **Weakest systems (test F1):** `31` indicating/recording systems 0.23, `51` standard practices/structures 0.42, `30` ice and rain protection 0.61. `51` is a generic structures chapter that overlaps with fuselage `53` and wings `57`. Best: `33` lights 0.98, `35` oxygen 0.96, `53` fuselage 0.95.
+
+Files: `results/baseline_test.json` (per-class scores), `results/baseline_test_confusion.png`, `results/baseline_top_words.json`.
 
 ## Files
 
